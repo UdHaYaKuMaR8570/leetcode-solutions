@@ -25,13 +25,19 @@
 // }
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        ListNode curr = head;
-        while (curr != null && curr.next != null) {
-            if (curr.val == curr.next.val) {
-                curr.next = curr.next.next;
+        HashSet<Integer> set = new HashSet<>();
+        if (head == null)
+            return null;
+        ListNode cur = head;
+        ListNode prev = null;
+        while (cur != null) {
+            if (set.contains(cur.val)) {
+                prev.next = cur.next;
             } else {
-                curr = curr.next;
+                set.add(cur.val);
+                prev = cur;
             }
+            cur = cur.next;
         }
         return head;
     }
