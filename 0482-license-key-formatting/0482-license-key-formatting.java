@@ -10,6 +10,7 @@ class Solution {
                     sb.append("-");
                     count = 0;
                 }
+                if(ch=='-')continue;
                 sb.append(s.charAt(i));
                 count++;
             }
